@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Card, List, Typography} from "antd";
+import Filter from "./components/Filter";
 
-const { Meta } = Card;
+const {Meta} = Card;
 
 interface IGame {
     "id": number,
@@ -43,16 +44,13 @@ function App() {
         };
     }, [loading]);
 
-    //let games: IGame[] = gameList as Array<IGame>
-
-    //console.log(games[0])
-
     return (
         <div className="App">
             <header className={"App-header"}>
                 <Typography.Title>Free Games</Typography.Title>
             </header>
             <div className={"App-body"}>
+                <Filter/>
                 <List
                     grid={{
                         gutter: 16,
@@ -77,7 +75,7 @@ function App() {
                         <List.Item style={{boxSizing: "border-box"}}>
                             <Card loading={loading} cover={
                                 <img
-                                    alt="example"
+                                    alt={"Cover art for " + game.thumbnail}
                                     src={game.thumbnail}
                                 />
                             } key={game.id}>
