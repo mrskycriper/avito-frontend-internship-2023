@@ -2,29 +2,21 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Card, List, Typography} from "antd";
 import Filter from "./components/Filter";
+import iGame from "./features/iGame";
+import {useSelector} from "react-redux";
+import filterStateToUrl from "./features/filterStateToUrl";
+import iFilterState from "./features/iFilterState";
+import type { RootState, AppDispatch } from "./app/store";
 
 const {Meta} = Card;
 
-interface IGame {
-    "id": number,
-    "title": string,
-    "thumbnail": string,
-    "short_description": string,
-    "game_url": string,
-    "genre": string,
-    "platform": string,
-    "publisher": string,
-    "developer": string,
-    "release_date": string,
-    "freetogame_profile_url": string
-}
-
 function App() {
+    const filter = useSelector((state: RootState) => state.url.value)
     const [loading, setLoading] = useState(true);
-    const [gameList, setGameList] = useState([] as Array<IGame>)
+    const [gameList, setGameList] = useState([] as Array<iGame>)
 
     useEffect(() => {
-        const url = 'https://free-to-play-games-database.p.rapidapi.com/api/games';
+        const url = filterStateToUrl(filter as iFilterState);
         const options = {
             method: 'GET',
             headers: {
@@ -34,7 +26,7 @@ function App() {
         };
         fetch(url, options).then((res) => {
             res.json().then((res) => {
-                setGameList(res as Array<IGame>)
+                setGameList(res as Array<iGame>)
             })
         }).catch((e) => {
             console.log(e)
@@ -42,7 +34,7 @@ function App() {
         return () => {
             setLoading(false)
         };
-    }, [loading]);
+    }, [loading, filter]);
 
     return (
         <div className="App">

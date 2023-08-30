@@ -8,10 +8,18 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import {setSort, setPlatform, setTags} from "../features/urlSlice";
+import filterStateToUrl from "../features/filterStateToUrl";
+import type { RootState, AppDispatch } from "../app/store";
 
 function Filter() {
+    const filter = useSelector((state: RootState) => state.url.value)
+    const dispatch = useDispatch()
+
+
     const handleOrderMenuClick: MenuProps['onClick'] = (e) => {
-        message.info(`selected order: ${e.key}`);
+        dispatch(setSort(e.key))
     };
 
     const sortOrderOptions: MenuProps['items'] = [
@@ -45,12 +53,12 @@ function Filter() {
     const sortOrderMenuProps = {
         items: sortOrderOptions,
         selectable: true,
-        defaultSelectedKeys: ['5'],
+        defaultSelectedKeys: [filter.sort],
         onClick: handleOrderMenuClick,
     };
 
     const handlePlatformMenuClick: MenuProps['onClick'] = (e) => {
-        message.info(`selected platform: ${e.key}`);
+        dispatch(setPlatform(e.key))
     };
 
     const platformFilterOptions: MenuProps['items'] = [
@@ -74,7 +82,7 @@ function Filter() {
     const platformFilterMenuProps = {
         items: platformFilterOptions,
         selectable: true,
-        defaultSelectedKeys: ['3'],
+        defaultSelectedKeys: [filter.platform],
         onClick: handlePlatformMenuClick,
     };
 
@@ -88,7 +96,7 @@ function Filter() {
     });
 
     const handleTagChange = (value: string) => {
-        message.info(`selected tags: ${value}`);
+        dispatch(setTags(value))
     };
 
 
