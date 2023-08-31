@@ -1,11 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers } from 'redux'
 import urlReducer from '../features/urlSlice'
+import pageReducer from '../features/pageSlice'
 
+const rootReducer = combineReducers({
+    url: urlReducer,
+    page: pageReducer,
+})
 
 const store = configureStore({
-    reducer: {
-        url: urlReducer
-    },
+    reducer: rootReducer
 })
 export default store
 

@@ -11,26 +11,21 @@ function filterStateToUrl(filterState: iFilterState) {
 
     if (filterState.sort !== "5" || filterState.platform !== "3" || filterState.tags !== "") {
         url += '?'
-        let first = true
         switch (filterState.sort) {
             case '1': {
                 url += "sort-by=release-date"
-                first = false
                 break
             }
             case '2': {
                 url += "sort-by=popularity"
-                first = false
                 break
             }
             case '3': {
                 url += "sort-by=alphabetical"
-                first = false
                 break
             }
             case '4': {
                 url += "sort-by=relevance"
-                first = false
                 break
             }
             default: {
@@ -43,12 +38,10 @@ function filterStateToUrl(filterState: iFilterState) {
         switch (filterState.platform) {
             case '1': {
                 url += "platform=browser"
-                first = false
                 break
             }
             case '2': {
                 url += "platform=pc"
-                first = false
                 break
             }
             default: {

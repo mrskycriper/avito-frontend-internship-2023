@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 import iFilterState from "./iFilterState";
 
 export const urlSlice = createSlice({
     name: 'url',
     initialState: {
-        value: { sort: "5", platform: "3", tags: ""} as iFilterState,
+        value: {sort: "5", platform: "3", tags: ""} as iFilterState,
     },
     reducers: {
         setSort: (state, action) => {
@@ -19,6 +19,6 @@ export const urlSlice = createSlice({
     },
 })
 
-export const { setSort, setPlatform, setTags } = urlSlice.actions
+export const {setSort, setPlatform, setTags} = urlSlice.actions
 
 export default urlSlice.reducer

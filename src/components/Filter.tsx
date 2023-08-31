@@ -1,4 +1,4 @@
-import {Button, Dropdown, MenuProps, message, Select, SelectProps, Space} from "antd";
+import {Button, Dropdown, MenuProps, Select, SelectProps, Space} from "antd";
 import {
     BarsOutlined,
     CalendarOutlined,
@@ -8,10 +8,9 @@ import {
     UserOutlined
 } from "@ant-design/icons";
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {setSort, setPlatform, setTags} from "../features/urlSlice";
-import filterStateToUrl from "../features/filterStateToUrl";
-import type { RootState, AppDispatch } from "../app/store";
+import type {RootState} from "../app/store";
 
 function Filter() {
     const filter = useSelector((state: RootState) => state.url.value)
