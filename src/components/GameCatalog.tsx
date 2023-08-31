@@ -7,7 +7,7 @@ import iGame from "../features/iGame";
 import filterStateToUrl from "../features/filterStateToUrl";
 import iFilterState from "../features/iFilterState";
 import {useNavigate} from "react-router-dom";
-import ServerError from "./ServerError";
+import GeneralError from "./GeneralError";
 import {ErrorBoundary} from "react-error-boundary";
 
 const {Meta} = Card;
@@ -43,7 +43,7 @@ function GameCatalog() {
     }, [loading, filter]);
 
     return (
-        <ErrorBoundary fallback={<ServerError/>}>
+        <ErrorBoundary fallback={<GeneralError/>}>
             <Space direction={"vertical"} size={"large"}>
                 <Filter/>
                 <Suspense fallback={<Spin/>}>

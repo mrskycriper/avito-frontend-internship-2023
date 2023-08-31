@@ -1,11 +1,11 @@
 import {Result} from "antd";
 
-function ServerError() {
+function GeneralError() {
     return (<Result
-        status="500"
-        title="500"
+        status="warning"
+        title="Error"
         subTitle="Sorry, something went wrong."
     />)
 }
 
-export default ServerError
+export default GeneralError

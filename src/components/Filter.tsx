@@ -90,7 +90,7 @@ function Filter() {
 
     const genreFilterOptions: SelectProps['options'] = []
 
-    genreTagList.forEach((item: string, index: number): void => {
+    genreTagList.forEach((item: string): void => {
         genreFilterOptions.push({label: item, value: item})
     });
 

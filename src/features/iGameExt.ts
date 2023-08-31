@@ -19,7 +19,7 @@ interface iGameExt {
         graphics: string,
         storage: string
     },
-    screenshots: [{ id: number, image: string }]
+    screenshots: { id: number, image: string }[]
 }
 
 export default iGameExt
